@@ -19,6 +19,10 @@ const style = css`
   }
   p {
     color: var(--color, red);
+    
+    & span {
+        color: green;
+    }
   }
 `;
 
@@ -38,9 +42,13 @@ function Comp() {
 ```javascript
 import { injectGlobal } from '@moneko/css';
 
-injectGlobal`
+// 执行这段代码将样式插入到head中,返回一个消除函数
+const flush = injectGlobal`
     body {
         color: red;
     }
 `;
+
+// 消除刚才插入的全局样式
+flush();
 ```
