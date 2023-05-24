@@ -1,0 +1,16 @@
+.idea
+.DS_Store
+.vscode
+node_modules
+node_modules.nosync
+dist
+lib
+types
+package-lock.json
+yarn.lock
+babel.d.ts
+babel.js
+index.d.ts
+index.js
+px-to-rem.d.ts
+px-to-rem.js

@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "downlevelIteration": true,
+    "strict": true,
+    "baseUrl": ".",
+    "target": "es5",
+    "module": "commonjs",
+    "outDir": ".",
+    "emitDeclarationOnly": true,
+    "declaration": true,
+    "newLine": "lf",
+    "paths": {
+      "shared-store-object/*": ["src/*"]
+    }
+  },
+  "exclude": ["node_modules"],
+  "include": ["src"]
+}
