@@ -1,6 +1,6 @@
 {
   "name": "@moneko/css",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "css in js",
   "main": "index.js",
   "scripts": {
