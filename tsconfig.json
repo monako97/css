@@ -8,10 +8,7 @@
     "outDir": ".",
     "emitDeclarationOnly": true,
     "declaration": true,
-    "newLine": "lf",
-    "paths": {
-      "shared-store-object/*": ["src/*"]
-    }
+    "newLine": "lf"
   },
   "exclude": ["node_modules"],
   "include": ["src"]
