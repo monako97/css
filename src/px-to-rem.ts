@@ -1,4 +1,4 @@
-import { DECLARATION, type Middleware } from 'stylis';
+import { DECLARATION, type Middleware } from "stylis";
 
 export type PxToRemOptions = {
   remSize?: number;
@@ -9,24 +9,24 @@ export type PxToRemOptions = {
 const pxRegexp = /"[^"]+"|'[^']+'|url\([^)]+\)|(\d*\.?\d+)px/g;
 const pxToRem =
   ({ remSize = 16, allowList, blockList }: PxToRemOptions = {}): Middleware =>
-  (element) => {
-    if (element.type === DECLARATION) {
-      const declarationHasPx = element.value.match(pxRegexp);
+  (ele) => {
+    if (ele.type === DECLARATION) {
+      const declarationHasPx = ele.value.match(pxRegexp);
 
       if (declarationHasPx) {
-        if (allowList && !allowList.includes(element.props as string)) return;
-        if (blockList && blockList.includes(element.props as string)) return;
+        const props = ele.props as string;
 
-        const expression = (element.children as string).replace(pxRegexp, (match, group) =>
-          group ? `${Number(group) / remSize}rem` : match
+        if (!allowList?.includes(props) || blockList?.includes(props)) return;
+        const expression = (ele.children as string).replace(
+          pxRegexp,
+          (match, group) => (group ? `${Number(group) / remSize}rem` : match)
         );
-        const reconstructedDeclaration = `${element.props}:${expression};`;
 
-        element.return = reconstructedDeclaration;
+        ele.return = `${props}:${expression};`;
       }
     }
   };
 
-Object.defineProperty(pxToRem, 'name', { value: 'px2Rem' });
+Object.defineProperty(pxToRem, "name", { value: "px2Rem" });
 
 export default pxToRem;
