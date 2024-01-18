@@ -1,4 +1,4 @@
-import { DECLARATION, type Middleware } from 'stylis';
+import { DECLARATION, type Middleware } from "stylis";
 
 export type PxToRemOptions = {
   remSize?: number;
@@ -17,16 +17,14 @@ const pxToRem =
         if (allowList && !allowList.includes(ele.props as string)) return;
         if (blockList && blockList.includes(ele.props as string)) return;
 
-        const expression = (ele.children as string).replace(pxRegexp, (match, group) =>
-          group ? `${Number(group) / remSize}rem` : match
-        );
-        const reconstructedDeclaration = `${ele.props}:${expression};`;
-
-        ele.return = reconstructedDeclaration;
+        ele.return = `${ele.props}:${(ele.children as string).replace(
+          pxRegexp,
+          (match, group) => (group ? `${Number(group) / remSize}rem` : match)
+        )};`;
       }
     }
   };
 
-Object.defineProperty(pxToRem, 'name', { value: 'px2Rem' });
+Object.defineProperty(pxToRem, "name", { value: "px2Rem" });
 
 export default pxToRem;
