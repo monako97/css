@@ -26,6 +26,7 @@ export interface CSSProperties extends PropertiesHyphen {
 }
 
 export {
+  Interpolation,
   CSSInterpolation,
   ArrayCSSInterpolation,
   ComponentSelector,
